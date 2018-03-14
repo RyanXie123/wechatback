@@ -71,7 +71,6 @@ module.exports = function (opts){
                     '</xml>'
                     console.log(reply);
                     that.body = reply;
-                    return;
                 
             }
         }
