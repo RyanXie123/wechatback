@@ -24,6 +24,7 @@ function Wechat(opts) {
             return that.updateAccessToken();
         }
         if(that.isValidToken(data)){
+            console.log('valid:  ' + JSON.stringify(data));
             Promise.resolve(data);
         }else {
             return that.updateAccessToken();
