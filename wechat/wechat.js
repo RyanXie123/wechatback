@@ -19,6 +19,7 @@ function Wechat(opts) {
 
     this.getAccessToken().then(function(data){
         try {
+            console.log('read token from disk'+JSON.stringify(data));
             data = JSON.parse(data);
         }catch(e){
             return that.updateAccessToken();
