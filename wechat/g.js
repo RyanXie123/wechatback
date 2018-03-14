@@ -60,8 +60,8 @@ module.exports = function (opts){
 
             if(message.MsgType === 'text'){
                     var now = new Date().getTime();
-                    that.status = 200;
-                    that.type = 'application/xml';
+                    // ctx.response.status = 200;
+                    ctx.response.type = 'application/xml';
                     var reply = '<xml>'+
                     '<ToUserName><![CDATA['+message.FromUserName+'] ]></ToUserName>'+
                     '<FromUserName><![CDATA['+message.ToUserName+']]></FromUserName>' +
@@ -70,7 +70,7 @@ module.exports = function (opts){
                     '<Content><![CDATA[你好]]></Content>'+
                     '</xml>'
                     console.log(reply);
-                    that.body = reply;
+                    ctx.response.body = reply;
                 
             }
         }
