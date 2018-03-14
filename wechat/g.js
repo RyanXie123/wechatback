@@ -40,8 +40,8 @@ module.exports = function (opts){
             });
             // console.log(data.toString());
             var content = yield util.parseXMLAsync(data);
-
             console.log(content);
+            var message = util.formatMessage(content.xml);
         }
         
     
