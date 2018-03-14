@@ -45,34 +45,48 @@ module.exports = function (opts){
             var message = util.formatMessage(content.xml);
             console.log(message);
             
-            if(message.MsgType === 'event'){
-                if(message.Event ==='subscribe'){
-                    console.log('new suber');
-                    var now = new Date().getTime();
-                    // that.status = 200;
-                    that.type = 'application/xml';
-                    var reply = '<xml> <ToUserName>< ![CDATA['+message.FromUserName+'] ]></ToUserName> <FromUserName>< ![CDATA['+message.ToUserName+'] ]></FromUserName> <CreateTime>'+now+'</CreateTime> <MsgType>< ![CDATA[text] ]></MsgType> <Content>< ![CDATA[你好] ]></Content> </xml>'
-                    console.log(reply);
-                    that.body = reply;
-                    return;
-                }
-            }
+            this.weixin = message;
 
-            if(message.MsgType === 'text'){
-                    var now = new Date().getTime();
-                    // that.status = 200;
-                    that.type = 'application/xml';
-                    var reply = '<xml>'+
-                    '<ToUserName><![CDATA['+message.FromUserName+']]></ToUserName>'+
-                    '<FromUserName><![CDATA['+message.ToUserName+']]></FromUserName>' +
-                    '<CreateTime>'+now+'</CreateTime>'+ 
-                    '<MsgType><![CDATA[text]]></MsgType>'+ 
-                    '<Content><![CDATA[你是个大傻妞，哈哈哈]]></Content>'+
-                    '</xml>'
-                    console.log(reply);
-                    that.body = reply;
+
+            yield handler.call(this,next);
+
+            wechat.reply.call(this);
+
+
+            // if(message.MsgType === 'event'){
+            //     if(message.Event ==='subscribe'){
+            //         console.log('new suber');
+            //         var now = new Date().getTime();
+            //         // that.status = 200;
+            //         that.type = 'application/xml';
+            //         var reply = '<xml>'+
+            //         '<ToUserName><![CDATA['+message.FromUserName+']]></ToUserName>'+
+            //         '<FromUserName><![CDATA['+message.ToUserName+']]></FromUserName>' +
+            //         '<CreateTime>'+now+'</CreateTime>'+ 
+            //         '<MsgType><![CDATA[text]]></MsgType>'+ 
+            //         '<Content><![CDATA[你是个大傻妞，哈哈哈]]></Content>'+
+            //         '</xml>';
+            //         console.log(reply);
+            //         that.body = reply;
+            //         return;
+            //     }
+            // }
+
+            // if(message.MsgType === 'text'){
+            //         var now = new Date().getTime();
+            //         // that.status = 200;
+            //         that.type = 'application/xml';
+            //         var reply = '<xml>'+
+            //         '<ToUserName><![CDATA['+message.FromUserName+']]></ToUserName>'+
+            //         '<FromUserName><![CDATA['+message.ToUserName+']]></FromUserName>' +
+            //         '<CreateTime>'+now+'</CreateTime>'+ 
+            //         '<MsgType><![CDATA[text]]></MsgType>'+ 
+            //         '<Content><![CDATA[你是个大傻妞，哈哈哈]]></Content>'+
+            //         '</xml>'
+            //         console.log(reply);
+            //         that.body = reply;
                 
-            }
+            // }
         }
         
     
