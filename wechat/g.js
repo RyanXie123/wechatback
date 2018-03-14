@@ -57,6 +57,17 @@ module.exports = function (opts){
                     return;
                 }
             }
+
+            if(message.MsgType === 'text'){
+                    var now = new Date().getTime();
+                    that.status = 200;
+                    that.type = 'application/xml';
+                    var reply = '<xml> <ToUserName>< ![CDATA['+message.FromUserName+'] ]></ToUserName> <FromUserName>< ![CDATA['+message.ToUserName+'] ]></FromUserName> <CreateTime>'+now+'</CreateTime> <MsgType>< ![CDATA[text] ]></MsgType> <Content>< ![CDATA[你好] ]></Content> </xml>'
+                    console.log(reply);
+                    that.body = reply;
+                    return;
+                
+            }
         }
         
     
