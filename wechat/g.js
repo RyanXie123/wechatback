@@ -19,6 +19,7 @@ module.exports = function (opts){
         var echostr = this.query.echostr;
         var str = [token,timestamp,nonce].sort().join('');
         var sha = sha1(str);
+        var that = this;
     
     
         if(this.method === 'GET'){
@@ -43,6 +44,16 @@ module.exports = function (opts){
             console.log(content);
             var message = util.formatMessage(content.xml);
             console.log(message);
+            
+            if(message.MsgType === 'event'){
+                if(message.Event ==='subscribe'){
+                    var now = new Date().getTime();
+                    that.status = 200;
+                    that.type = 'application/xml';
+                    that.body = '<xml> <ToUserName>< ![CDATA['+message.FromUserName+'] ]></ToUserName> <FromUserName>< ![CDATA['+message.ToUserName+'] ]></FromUserName> <CreateTime>'+now+'</CreateTime> <MsgType>< ![CDATA[text] ]></MsgType> <Content>< ![CDATA[我是大傻妞] ]></Content> </xml>'
+                    return;
+                }
+            }
         }
         
     
