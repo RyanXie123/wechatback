@@ -36,8 +36,8 @@ function Wechat(opts) {
 }
 
 Wechat.prototype.isValidToken = function(data) {
-    var wechat = new Wechat(opts);
     
+
     if(!data || !data.access_token || !data.expires_in){
         return false;
     }
@@ -57,6 +57,7 @@ Wechat.prototype.updateAccessToken = function() {
     return new Promise(function(resolve,reject){
         request({url:url,json:true}).then(function(response){
             var data = response[1];
+            console.log('has got new token :'+ data.access_token);
             var now = (new Date().getTime());
             var expires_in = now + (data.expires_in - 20)*1000;
             data.expires_in = expires_in;
@@ -66,6 +67,9 @@ Wechat.prototype.updateAccessToken = function() {
     
 }
 module.exports = function (opts){
+    var wechat = new Wechat(opts);
+
+
     return function *(next){
         console.log(this.query);
     
