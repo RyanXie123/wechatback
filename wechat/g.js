@@ -51,7 +51,9 @@ module.exports = function (opts){
                     var now = new Date().getTime();
                     that.status = 200;
                     that.type = 'application/xml';
-                    that.body = '<xml> <ToUserName><![CDATA['+message.FromUserName+']]></ToUserName> <FromUserName><![CDATA['+message.ToUserName+'] ]></FromUserName> <CreateTime>'+now+'</CreateTime> <MsgType><![CDATA[text]]></MsgType> <Content>< ![CDATA[hi!我是大傻妞] ]></Content> </xml>'
+                    var reply = '<xml> <ToUserName>< ![CDATA['+message.FromUserName+'] ]></ToUserName> <FromUserName>< ![CDATA['+message.ToUserName+'] ]></FromUserName> <CreateTime>'+now+'</CreateTime> <MsgType>< ![CDATA[text] ]></MsgType> <Content>< ![CDATA[你好] ]></Content> </xml>'
+                    console.log(reply);
+                    that.body = reply;
                     return;
                 }
             }
