@@ -47,10 +47,11 @@ module.exports = function (opts){
             
             if(message.MsgType === 'event'){
                 if(message.Event ==='subscribe'){
+                    console.log('new suber');
                     var now = new Date().getTime();
                     that.status = 200;
                     that.type = 'application/xml';
-                    that.body = '<xml> <ToUserName>< ![CDATA['+message.FromUserName+'] ]></ToUserName> <FromUserName>< ![CDATA['+message.ToUserName+'] ]></FromUserName> <CreateTime>'+now+'</CreateTime> <MsgType>< ![CDATA[text] ]></MsgType> <Content>< ![CDATA[我是大傻妞] ]></Content> </xml>'
+                    that.body = '<xml> <ToUserName><![CDATA['+message.FromUserName+']]></ToUserName> <FromUserName><![CDATA['+message.ToUserName+'] ]></FromUserName> <CreateTime>'+now+'</CreateTime> <MsgType><![CDATA[text]]></MsgType> <Content>< ![CDATA[hi!我是大傻妞] ]></Content> </xml>'
                     return;
                 }
             }
