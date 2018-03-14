@@ -16,7 +16,7 @@ var config = {
         },
         saveAccessToken:function(data){
             data = JSON.stringify(data);
-            return util.writeFileAsync(wechat_file)
+            return util.writeFileAsync(wechat_file,data);
         }
     }
 };
