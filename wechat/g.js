@@ -67,7 +67,7 @@ module.exports = function (opts){
                     '<FromUserName><![CDATA['+message.ToUserName+']]></FromUserName>' +
                     '<CreateTime>'+now+'</CreateTime>'+ 
                     '<MsgType><![CDATA[text]]></MsgType>'+ 
-                    '<Content><![CDATA[你好]]></Content>'+
+                    '<Content><![CDATA[你是个大傻妞，哈哈哈]]></Content>'+
                     '</xml>'
                     console.log(reply);
                     that.body = reply;
