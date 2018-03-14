@@ -13,5 +13,5 @@ app.use(function *(next){
     console.log(this.query);
 })
 
-app.listen(1234);
-console.log('listening : 1234');
+app.listen(80);
+console.log('listening : 80');
