@@ -12,7 +12,7 @@ var config = {
         appSecret: "8e3b900c3a4ae2ec8eeb104341764fd1",
         token: 'ryantestasxxxxxtoke',
         getAccessToken:function(){
-           return util.readFileAsync(wechat_file)
+           return util.readFileAsync(wechat_file,'utf8');
         },
         saveAccessToken:function(data){
             data = JSON.stringify(data);
