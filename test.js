@@ -21,6 +21,7 @@ app.use(function *(next){
     var echostr = this.query.echostr;
     var str = [token,timestamp,nonce].sort().join('');
     var sha = sha1(str);
+    console.log('sha:'+sha);
 
     if(sha === signature) {
         this.body = echostr + '';
