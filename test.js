@@ -5,7 +5,7 @@ var wechat = require('./wechat/g');
 var path = require('path');
 var util = require('./libs/util')
 
-var wechat_file = path.join(__dirname,'/wechat/config/wechat.txt')
+var wechat_file = path.join(__dirname,'./wechat/config/wechat.txt')
 var config = {
     wechat:{
         appID: "wxe5170cac100b8e27",
