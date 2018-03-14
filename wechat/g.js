@@ -63,7 +63,7 @@ module.exports = function (opts){
                     // that.status = 200;
                     that.type = 'application/xml';
                     var reply = '<xml>'+
-                    '<ToUserName><![CDATA['+message.FromUserName+'] ]></ToUserName>'+
+                    '<ToUserName><![CDATA['+message.FromUserName+']]></ToUserName>'+
                     '<FromUserName><![CDATA['+message.ToUserName+']]></FromUserName>' +
                     '<CreateTime>'+now+'</CreateTime>'+ 
                     '<MsgType><![CDATA[text]]></MsgType>'+ 
