@@ -9,7 +9,7 @@ module.exports = function (opts){
     var wechat = new Wechat(opts);
 
 
-    return function *(ctx,next){
+    return function *(next){
         console.log(this.query);
     
         var token = opts.token;
@@ -49,7 +49,7 @@ module.exports = function (opts){
                 if(message.Event ==='subscribe'){
                     console.log('new suber');
                     var now = new Date().getTime();
-                    that.status = 200;
+                    // that.status = 200;
                     that.type = 'application/xml';
                     var reply = '<xml> <ToUserName>< ![CDATA['+message.FromUserName+'] ]></ToUserName> <FromUserName>< ![CDATA['+message.ToUserName+'] ]></FromUserName> <CreateTime>'+now+'</CreateTime> <MsgType>< ![CDATA[text] ]></MsgType> <Content>< ![CDATA[你好] ]></Content> </xml>'
                     console.log(reply);
@@ -60,8 +60,8 @@ module.exports = function (opts){
 
             if(message.MsgType === 'text'){
                     var now = new Date().getTime();
-                    // ctx.response.status = 200;
-                    ctx.response.type = 'application/xml';
+                    // that.status = 200;
+                    that.type = 'application/xml';
                     var reply = '<xml>'+
                     '<ToUserName><![CDATA['+message.FromUserName+'] ]></ToUserName>'+
                     '<FromUserName><![CDATA['+message.ToUserName+']]></FromUserName>' +
@@ -70,7 +70,7 @@ module.exports = function (opts){
                     '<Content><![CDATA[你好]]></Content>'+
                     '</xml>'
                     console.log(reply);
-                    ctx.response.body = reply;
+                    that.body = reply;
                 
             }
         }
