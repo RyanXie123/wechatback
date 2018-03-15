@@ -21,7 +21,7 @@ var tpl = heredoc(function(){/*
         <Title><![CDATA[<%= content.title %>]]></Title>
         <Description>< ![CDATA[<%= content.description %>]]></Description>
         </Video>
-    <% } else if(msgType === 'video') { %>
+    <% } else if(msgType === 'music') { %>
         <Music>
         <Title><![CDATA[<%= content.title %>]]></Title>
         <Description><![CDATA[<%= content.description %>]]></Description>
