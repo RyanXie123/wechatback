@@ -53,6 +53,14 @@ exports.reply = function*(next) {
                 type:'image',
                 mediaId:data.media_id
             }
+        }else if(content === '打呼噜'){
+            var data = yield wechatApi.uploadMaterial('video',__dirname+'/IMG_1407.TRIM.MOV');
+            reply = {
+                type:'video',
+                title:'大傻妞打呼噜',
+                description:'我在打呼zzzzz,do not disturb me',
+                mediaId:data.media_id
+            }
         }
 
 
