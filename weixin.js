@@ -6,7 +6,7 @@ exports.reply = function*(next) {
     var message = this.weixin;
 
     if(message.MsgType === 'event'){
-        if(message.Event === 'subscripe'){
+        if(message.Event === 'subscribe'){
             if(message.EventKey){
                 console.log('扫码进来：' + message.EventKey + '' + message.ticket)
             }
