@@ -39,7 +39,7 @@ var tpl = heredoc(function(){/*
             <PicUrl><![CDATA[<%= item.picUrl %>] ]></PicUrl>
             <Url><![CDATA[<%= item.url %>] ]></Url>
             </item>
-            <%}) %>
+            <% }) %>
         </Articles>
     <% } %>
     </xml>
