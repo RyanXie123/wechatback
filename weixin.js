@@ -16,6 +16,8 @@ exports.reply = function*(next) {
             console.log('取消订阅');
             this.body = ''
         }
+    }else if(message.MsgType === 'text'){
+        this.body = 'Hello,大傻妞';
     }
 
     yield next;
