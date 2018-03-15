@@ -54,7 +54,7 @@ exports.reply = function*(next) {
                 mediaId:data.media_id
             }
         }else if(content === '打呼噜'){
-            var data = yield wechatApi.uploadMaterial('video',__dirname+'/IMG_1407.TRIM.MOV');
+            var data = yield wechatApi.uploadMaterial('video',__dirname+'/IMG_1407.TRIM.mp4');
             reply = {
                 type:'video',
                 title:'大傻妞打呼噜',
