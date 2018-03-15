@@ -1,6 +1,8 @@
 'use strict'
 
-
+var config = require('./config');
+var Wechat = require('./wechat/wechat');
+var wechatApi = new Wechat(config.wechat);
 
 exports.reply = function*(next) {
     var message = this.weixin;
@@ -39,7 +41,15 @@ exports.reply = function*(next) {
                 picUrl:'https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/whfpf%3D180%2C140%2C50/sign=73392ef5ecfe9925cb593a1052956fe7/023b5bb5c9ea15ce7fc3d639ba003af33a87b2d4.jpg',
                 url:'https://github.com'
             }]
+        }else if(content === '2'){
+            var data = yield wechatApi.uploadMaterial('image',__dirname+'/2.jpg');
+            reply = {
+                type:'image',
+                mediaId:data.media_id
+            }
         }
+
+
 
         this.body = reply;
     }

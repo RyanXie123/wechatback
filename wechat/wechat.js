@@ -3,44 +3,24 @@
 'use strict'
 
 var Promise = require('bluebird');
+var fs = require('fs');
 var request = Promise.promisify(require('request'));
 var util = require('./util')
 var prefix = 'https://api.weixin.qq.com/cgi-bin/'
 var api = {
-    accessToken: prefix + 'token?grant_type=client_credential'
+    accessToken: prefix + 'token?grant_type=client_credential',
+    upload: prefix + 'media/upload?'
 }
 
 function Wechat(opts) {
-    var that = this;
+
     this.appID = opts.appID;
     this.appSecret = opts.appSecret;
     this.getAccessToken = opts.getAccessToken;
     this.saveAccessToken = opts.saveAccessToken;
 
-    this.getAccessToken().then(function(data){
-        try {
-            data = JSON.parse(data);
-        }catch(e){
-            return that.updateAccessToken();
-        }
-        if(that.isValidToken(data)){
-            console.log('valid:  ' + JSON.stringify(data));
-            // Promise.resolve(data);
-            return new Promise(function(resolve,reject){
-                resolve(data);
-            })
-
-            //return Promise.resolve(data)
-
-        }else {
-            return that.updateAccessToken();
-        }
-
-    }).then(function(data){
-        that.access_token = data.access_token;
-        that.expires_in = data.expires_in;
-        that.saveAccessToken(data);
-    })
+    this.fetchAccessToken();
+    
 }
 
 Wechat.prototype.isValidToken = function(data) {
@@ -84,6 +64,70 @@ Wechat.prototype.reply = function (){
     this.status = 200;
     this.type = 'application/xml';
     this.body = xml;
+}
+
+Wechat.prototype.fetchAccessToken = function(){
+    var that = this;
+
+    if(this.access_token && this.expires_in){
+        if(this.isValidToken(this)){
+            return Promise.resolve(this);
+        }
+    }
+
+    this.getAccessToken().then(function(data){
+        try {
+            data = JSON.parse(data);
+        }catch(e){
+            return that.updateAccessToken();
+        }
+        if(that.isValidToken(data)){
+            console.log('valid:  ' + JSON.stringify(data));
+            // Promise.resolve(data);
+            return new Promise(function(resolve,reject){
+                resolve(data);
+            })
+
+            //return Promise.resolve(data)
+
+        }else {
+            return that.updateAccessToken();
+        }
+
+    }).then(function(data){
+        that.access_token = data.access_token;
+        that.expires_in = data.expires_in;
+        that.saveAccessToken(data);
+
+        return Promise.resolve(data);
+    })
+}
+
+Wechat.prototype.uploadMaterial = function(type,filePath) {
+    var that = this;
+    var form = {
+        media:fs.createReadStream(filePath)
+    }
+
+    
+    return new Promise(function(resolve,reject){
+        that.fetchAccessToken()
+        .then(function(data){
+            var url = api.upload + 'access_token='+data.access_token +'&type='+type;
+            request({url:url,method:'POST',formData:form,json:true}).then(function(response){
+                var _data = response.body;
+    
+                if(_data){
+                    resolve(_data);
+                }else{
+                    throw new Error('upload failed');
+                }
+            }).catch(function(err){
+                reject(err);
+            })
+        })
+        
+    })
 }
 
 module.exports = Wechat;
