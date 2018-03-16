@@ -162,6 +162,7 @@ Wechat.prototype.uploadMaterial = function(type,material,permanent) {
                 if(_data){
                     resolve(_data);
                 }else{
+                    console.log(response);
                     throw new Error('upload failed');
                 }
             }).catch(function(err){
