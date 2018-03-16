@@ -137,7 +137,7 @@ Wechat.prototype.uploadMaterial = function(type,material,permanent) {
     return new Promise(function(resolve,reject){
         that.fetchAccessToken()
         .then(function(data){
-            var url = uploadUrl + 'access_token='+data.access_token;
+            var url = uploadUrl + 'access_token='+data.access_token+'&type='+type;
             if(!permanent){
                 url = url +'&type='+type;
             }else {
