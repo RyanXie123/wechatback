@@ -61,6 +61,15 @@ exports.reply = function*(next) {
                 description:'我在打呼zzzzz,do not disturb me',
                 mediaId:data.media_id
             }
+        }else if(content === '今日读经'){
+            var data = yield wechatApi.uploadMaterial('image',__dirname+'/2.jpg');
+            reply = {
+                type:'music',
+                title:'读经',
+                description:'每日读经',
+                musicUrl:'http://mp3.jdjys.net:81/mp3/4英文赞美诗歌/06/Track05.mp3',
+                thumbMediaId:data.media_id
+            }
         }
 
 
