@@ -67,7 +67,7 @@ exports.reply = function*(next) {
                 type:'music',
                 title:'放松一下',
                 description:'放松一下',
-                musicUrl:'http://mp3.downs.cnfuyin.com/cdn/yuan-mp3/01福音、初信/福音营布道（刘志雄）/福音营布道1.mp3',
+                musicUrl:'http://mp3.downs.cnfuyin.com/cdn/yuan-mp3/07%E5%85%B6%E4%BB%96/%E8%8D%92%E6%BC%A0%E7%94%98%E6%B3%89%EF%BC%88%E8%80%83%E9%97%A8%E5%A4%AB%E4%BA%BA%EF%BC%89%E6%AF%8F%E6%97%A5%E7%81%B5%E4%BF%AE%EF%BC%811%E6%9C%88-12%E6%9C%88%E5%85%A8/0116.mp3',
                 thumbMediaId:data.media_id
             }
         }
