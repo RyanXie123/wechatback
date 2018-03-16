@@ -158,11 +158,11 @@ Wechat.prototype.uploadMaterial = function(type,material,permanent) {
 
             request(options).then(function(response){
                 var _data = response.body;
-    
+                console.log(response);
                 if(_data){
                     resolve(_data);
                 }else{
-                    console.log(response);
+                    
                     throw new Error('upload failed');
                 }
             }).catch(function(err){
