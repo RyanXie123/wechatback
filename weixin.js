@@ -62,7 +62,7 @@ exports.reply = function*(next) {
                 mediaId:data.media_id
             }
         }else if(content === '今日读经'){
-            var data = yield wechatApi.uploadMaterial('image',__dirname+'/2.jpg');
+            var data = yield wechatApi.uploadMaterial('image',__dirname+'/timg.jpeg');
             reply = {
                 type:'music',
                 title:'放松一下',
