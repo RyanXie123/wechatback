@@ -155,10 +155,11 @@ Wechat.prototype.uploadMaterial = function(type,material,permanent) {
             }else {
                 options.formData = form;
             }
+            console.log(options);
 
             request(options).then(function(response){
                 var _data = response.body;
-                console.log(response);
+                // console.log(response);
                 if(_data){
                     resolve(_data);
                 }else{
