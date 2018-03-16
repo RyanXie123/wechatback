@@ -48,7 +48,7 @@ exports.reply = function*(next) {
                 mediaId:data.media_id
             }
         }else if(content === '222'){
-            var data = yield wechatApi.uploadMaterial('image',__dirname+'/IMG_1354.JPG');
+            var data = yield wechatApi.uploadMaterial('pic',__dirname+'/timg.jpeg',{type:'image'});
             reply = {
                 type:'image',
                 mediaId:data.media_id
