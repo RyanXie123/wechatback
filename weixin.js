@@ -54,7 +54,7 @@ exports.reply = function*(next) {
                 mediaId:data.media_id
             }
         }else if(content === '22'){
-            var data = yield wechatApi.uploadMaterial('video',__dirname+'/IMG_1407.TRIM.mp4',{type:'video',description:'{"title":"大傻妞","introduction":"呼噜大王"}'});
+            var data = yield wechatApi.uploadMaterial('video',__dirname+'/IMG_1407.mp4',{type:'video',description:'{"title":"大傻妞","introduction":"呼噜大王"}'});
             reply = {
                 type:'video',
                 title:'大傻妞打呼噜',
