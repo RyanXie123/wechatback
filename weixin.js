@@ -65,9 +65,9 @@ exports.reply = function*(next) {
             var data = yield wechatApi.uploadMaterial('image',__dirname+'/2.jpg');
             reply = {
                 type:'music',
-                title:'读经',
-                description:'每日读经',
-                musicUrl:'http://mp3.jdjys.net:81/mp3/4英文赞美诗歌/06/Track05.mp3',
+                title:'放松一下',
+                description:'放松一下',
+                musicUrl:'http://mp3.downs.cnfuyin.com/cdn/yuan-mp3/01福音、初信/福音营布道（刘志雄）/福音营布道1.mp3',
                 thumbMediaId:data.media_id
             }
         }
